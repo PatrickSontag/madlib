@@ -17,5 +17,7 @@ def form():
 @app.route('/story')
 def story():
     """show completed story with user inputs"""
-    return render_template("story.html")
+    v = request.args["verb"]
+    n = request.args["noun"]
+    return render_template("story.html", verb=v, noun=n)
 
