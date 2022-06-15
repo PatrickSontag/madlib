@@ -30,5 +30,12 @@ def story():
     a = request.args["adjective"]
     n2 = request.args['noun2']
 
-    return render_template("story.html", verb=v, noun=n, adjective=a, noun2=n2)
+    ans = { "vb": v,
+                "nou": n,
+                "adj": a,
+                "nou2": n2}
+    
+    s = story.words
+
+    return render_template("story.html", verb=v, noun=n, adjective=a, noun2=n2, answers=ans, st=s)
 

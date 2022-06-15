@@ -33,6 +33,9 @@ class Story:
 
         return text
 
+    def words(self):
+        return self.prompts
+
 
 # Here's a story to get you started
 

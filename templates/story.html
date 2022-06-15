@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>The {{ noun }} decided to {{ verb }} the {{ adjective }} {{ noun2 }}!</h1>
-<h2>story:  {{ sto }}</h2>
+<h1>Story Time!</h1>
+<h2>The {{ noun }} decided to {{ verb }} the {{ adjective }} {{ noun2 }}.</h2>
+<h3>ANSWERS=  {{ answers }}</h3>
+<h3>The {{ answers.nou }} decided to {{ answers.vb }} the {{ answers.adj }} {{ answers.nou2 }}.</h3>
+<h3>words?  {{ st }}</h3>
 {% if comps %}
   <p>You're so:</p>
   <ul>
