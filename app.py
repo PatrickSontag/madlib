@@ -4,6 +4,8 @@ from random import choice, sample
 
 app = Flask(__name__)
 
+COMPLIMENTS = ["cool", "clever", "tenacious", "awesome", "Pythonic"]
+
 @app.route('/')
 def home():
     """homepage"""
@@ -17,7 +19,12 @@ def form():
 @app.route('/story')
 def story():
     """show completed story with user inputs"""
+    wants = request.args.get("comps")
+
+    if wants:
+        add_words = sample(COMPLIMENTS, 1)
+
     v = request.args["verb"]
     n = request.args["noun"]
-    return render_template("story.html", verb=v, noun=n)
+    return render_template("story.html", verb=v, noun=n, comps=add_words)
 
