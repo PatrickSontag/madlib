@@ -12,5 +12,8 @@
     </p>  
     <button>Go!</button>
   </form>
+  {% for prompt in prompts %}
+  <h2>prompt:  {{ prompt }}</h2>
+  {% endfor %}
 </body>
 </html>

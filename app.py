@@ -1,21 +1,25 @@
 from flask import Flask, request, render_template
+from flask_debugtoolbar import DebugToolbarExtension
 from random import choice, sample
 from stories import story
-# from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
 
-COMPLIMENTS = ["cool", "clever", "tenacious", "awesome", "Pythonic"]
+app.config['SECRET_KEY'] = "secret"
+debug = DebugToolbarExtension(app)
+
+
+# @app.route('/')
+# def home():
+#     """homepage"""
+#     return render_template("home.html")
 
 @app.route('/')
-def home():
-    """homepage"""
-    return render_template("home.html")
-
-@app.route('/form')
 def form():
     """show form for story inputs"""
-    return render_template("form.html")
+    prompts = story.prompts
+
+    return render_template("form.html", prompts=prompts)
 
 @app.route('/story')
 def story():
@@ -31,11 +35,9 @@ def story():
     n2 = request.args['noun2']
 
     ans = { "vb": v,
-                "nou": n,
-                "adj": a,
-                "nou2": n2}
-    
-    s = story.words
+            "nou": n,
+            "adj": a,
+            "nou2": n2}
 
-    return render_template("story.html", verb=v, noun=n, adjective=a, noun2=n2, answers=ans, st=s)
+    return render_template("story.html", verb=v, noun=n, adjective=a, noun2=n2, answers=ans)
 
