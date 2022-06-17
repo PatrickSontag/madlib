@@ -23,12 +23,12 @@ class Story:
         self.prompts = words
         self.template = text
 
-    def generate(self, answers):
+    def generate(self, ans):
         """Substitute answers into text."""
 
         text = self.template
 
-        for (key, val) in answers.items():
+        for (key, val) in ans.items():
             text = text.replace("{" + key + "}", val)
 
         return text
